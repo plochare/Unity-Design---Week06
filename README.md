@@ -6,7 +6,7 @@
 2. [Unity AR Foundation](#Unity-AR-Foundation)  
 3. [Mobile AR Development](#Mobile-AR-Development)  
 4. [Unity Vuforia SDK](#Unity-Vuforia-SDK)  
-5. [Niantic ARDK](#Niantic ARDK)  
+5. [Niantic ARDK](#Niantic-ARDK)  
 6. [Class Assignment - Week #06](#Class-Assignment-week06)  
 
 ---
