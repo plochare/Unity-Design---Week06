@@ -11,7 +11,7 @@
 
 ---
 
-# Unity Publish from Unity 📱 
+# IOS Publish from Unity 📱 
 
 ---
 
@@ -155,13 +155,19 @@ public class SwipeDetector : MonoBehaviour
 
                 if (Mathf.Abs(x) > Mathf.Abs(y))
                 {
-                    if (x > 0) Debug.Log("Swipe Right");
-                    else Debug.Log("Swipe Left");
+                    if (x > 0){
+                        Debug.Log("Swipe Right");
+                    }else{
+                        Debug.Log("Swipe Left");
+                    }
                 }
                 else
                 {
-                    if (y > 0) Debug.Log("Swipe Up");
-                    else Debug.Log("Swipe Down");
+                    if (y > 0){
+                        Debug.Log("Swipe Up");
+                    }else{
+                        Debug.Log("Swipe Down");
+                    }
                 }
             }
         }
