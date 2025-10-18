@@ -11,6 +11,34 @@
 
 ---
 
+# Unity Publish from Unity 📱 
+
+---
+
+### Configure Unity Project for iOS
+- **Switch Platform**:  
+![Settings screen](images/Settings.png)
+
+### Build Xcode Project from Unity
+- **Build Xcode**:  
+![Build screen](images/Build.png)
+
+### Signing & Capabilities
+- **Signing Certificate**:  
+![Xcode screen](images/Signing.png)
+
+### Enable Developer Mode on iPhone & Trust Your Mac Device
+
+```csharp
+
+Settings → Privacy & Security → Developer Mode
+
+Settings → General → VPN & Device Management
+
+````
+
+---
+
 # Unity UI Touch Events 🚀
 
 Touch interaction is the foundation of mobile gameplay and interactive applications.  
