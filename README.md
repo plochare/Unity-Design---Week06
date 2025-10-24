@@ -6,8 +6,6 @@
 2. [Mobile Touch Events](#UI-Touch-Events)  
 3. [Unity AR Foundation](#Unity-AR-Foundation)  
 4. [Mobile AR App Development](#Mobile-AR-App-Development)  
-5. [Unity Vuforia SDK](#Unity-Vuforia-SDK)  
-6. [Niantic ARDK](#Niantic-ARDK)
 
 ---
 
