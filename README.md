@@ -5,7 +5,8 @@
 1. [IOS Publish](#Unity-Xcode-Mobile-Publish)  
 2. [Mobile Touch Events](#UI-Touch-Events)  
 3. [Unity AR Foundation](#Unity-AR-Foundation)  
-4. [Mobile AR App Development](#Mobile-AR-App-Development)  
+4. [Mobile AR App Development](#Mobile-AR-App-Development)
+5. [Vuforia AR SDK](#Vuforia-SDK) 
 
 ---
 
@@ -459,5 +460,135 @@ Unity’s XR Simulation (inside the Editor) can help emulate some aspects during
 # Mobile AR Development Unity Learn Module
 
 https://learn.unity.com/pathway/mobile-ar-development?version=2022.3
+
+---
+
+# Unity Vuforia SDK 🔍✨
+
+Vuforia is a leading **Augmented Reality (AR) SDK** for Unity that allows developers to recognize images, objects, and environments, then overlay interactive 3D content. It’s widely used for AR apps in education, retail, training, and entertainment.
+
+---
+
+## 🎯 What is Vuforia?
+Vuforia is an **AR engine** that integrates with Unity to provide:
+- 📷 **Image Target Recognition** → Detect and augment 2D images.  
+- 🛠 **Model Target Tracking** → Recognize 3D objects.  
+- 🌍 **Ground Plane** → Place AR objects on real-world surfaces.  
+- 🎭 **VUMarks** → Custom markers (like QR codes but stylized).  
+- 🕹 **Virtual Buttons** → Trigger actions with physical marker interactions.  
+- 🧩 **Multi-targets** → Track multiple objects at once.  
+
+---
+
+## 🛠 Requirements
+- Unity **2021 LTS or newer**.  
+- [Vuforia Engine SDK](https://developer.vuforia.com/downloads/sdk) installed in Unity.  
+- A supported device (Android/iOS) with a working camera.  
+- [Vuforia Developer Account](https://developer.vuforia.com/) (for license keys).  
+
+---
+
+## 📥 Installation
+
+1. **Enable Vuforia in Unity**  
+   - Go to: `Edit → Project Settings → Player → XR Settings`.  
+   - Enable **Vuforia Augmented Reality Support**.  
+
+2. **Get a License Key**  
+   - Sign up at [Vuforia Developer Portal](https://developer.vuforia.com/).  
+   - Create a new project → Copy your **App License Key**.  
+   - Paste it into: `Vuforia Configuration → App License Key`.  
+
+3. **Import Vuforia SDK**  
+   - Via Unity **Package Manager** or `.unitypackage` download from the Vuforia portal.  
+
+---
+
+## 🚀 Quick Start Tutorial
+
+### 1. Setup AR Camera
+- Delete the default Unity **Main Camera**.  
+- Add a **Vuforia AR Camera** (GameObject → Vuforia Engine → AR Camera).  
+- In **AR Camera Inspector**, paste your License Key.  
+
+### 2. Add an Image Target
+1. Go to [Vuforia Target Manager](https://developer.vuforia.com/target-manager).  
+2. Upload a reference image → Generate a **Database**.  
+3. Download the `.unitypackage` and import into Unity.  
+4. In Unity:  
+   - Add **GameObject → Vuforia Engine → Image Target**.  
+   - Assign your imported database + image.  
+
+### 3. Place 3D Content
+- Drag a 3D model (e.g., Cube, Character prefab) as a **child of the Image Target**.  
+- When the target is detected via camera, the object appears on top of it.  
+
+### 4. Build & Test
+- Switch platform: **Android/iOS**.  
+- Build & run on a device.  
+- Point your camera at the image target → Watch your AR content appear.  
+
+---
+
+## 🧩 Example Script: Rotate Object on Target
+```csharp
+using UnityEngine;
+using Vuforia;
+
+public class RotateOnTarget : MonoBehaviour, ITrackableEventHandler
+{
+    private TrackableBehaviour trackable;
+
+    void Start()
+    {
+        trackable = GetComponent<TrackableBehaviour>();
+        if (trackable) trackable.RegisterTrackableEventHandler(this);
+    }
+
+    public void OnTrackableStateChanged(
+        TrackableBehaviour.Status prev, TrackableBehaviour.Status newStatus)
+    {
+        if (newStatus == TrackableBehaviour.Status.DETECTED ||
+            newStatus == TrackableBehaviour.Status.TRACKED)
+        {
+            // Target found → Start rotating
+            StartCoroutine(Rotate());
+        }
+    }
+
+    private System.Collections.IEnumerator Rotate()
+    {
+        while (true)
+        {
+            transform.Rotate(Vector3.up * 50 * Time.deltaTime);
+            yield return null;
+        }
+    }
+}
+````
+
+✅ This script rotates a 3D object whenever the target image is detected.
+
+---
+
+## ⚡ Advanced Features
+
+* **Ground Plane** → Place objects on horizontal surfaces without markers.
+* **Model Targets** → Recognize and augment real 3D products.
+* **VUMarks** → Brandable AR markers (customized QR-like codes).
+* **Virtual Buttons** → Add interactivity by defining button zones on targets.
+
+---
+
+## 💡 Best Practices
+
+* Use **high-contrast, non-repetitive images** for targets.
+* Test target ratings in the Vuforia Target Manager (⭐ stronger = better).
+* Optimize 3D assets (low poly, compressed textures) for mobile performance.
+* Handle lost tracking gracefully (fade or pause AR content).
+* Always test on real devices — AR is hardware dependent.
+
+---
+
  
  
